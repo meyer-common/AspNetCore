@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Meyer.Common.AspNetCore
 {
@@ -12,6 +13,18 @@ namespace Meyer.Common.AspNetCore
         {
             return services
                 .AddMvcCore()
+                .AddJsonFormatters(x =>
+                {
+                    x.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    x.NullValueHandling = NullValueHandling.Ignore;
+                    x.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+                });
+        }
+
+        public static IMvcCoreBuilder AddMvcMin(this IServiceCollection services, Action<MvcOptions> setupAction)
+        {
+            return services
+                .AddMvcCore(setupAction)
                 .AddJsonFormatters(x =>
                 {
                     x.ContractResolver = new CamelCasePropertyNamesContractResolver();
