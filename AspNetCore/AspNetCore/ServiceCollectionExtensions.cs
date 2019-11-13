@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Text.Json;
 
 namespace Meyer.Common.AspNetCore
 {
@@ -13,11 +12,10 @@ namespace Meyer.Common.AspNetCore
         {
             return services
                 .AddMvcCore()
-                .AddJsonFormatters(x =>
+                .AddJsonOptions(x =>
                 {
-                    x.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    x.NullValueHandling = NullValueHandling.Ignore;
-                    x.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+                    x.JsonSerializerOptions.IgnoreNullValues = true;
+                    x.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 });
         }
 
@@ -25,11 +23,10 @@ namespace Meyer.Common.AspNetCore
         {
             return services
                 .AddMvcCore(setupAction)
-                .AddJsonFormatters(x =>
+                .AddJsonOptions(x =>
                 {
-                    x.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    x.NullValueHandling = NullValueHandling.Ignore;
-                    x.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+                    x.JsonSerializerOptions.IgnoreNullValues = true;
+                    x.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 });
         }
 

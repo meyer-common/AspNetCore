@@ -4,23 +4,20 @@
     <Authors>Meyer</Authors>
     <Description>AspNetCore setup extensions and helpers</Description>
     <Copyright>Copyright 2019</Copyright>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <Version>1.0.0.0</Version>
     <PackageVersion>1.0.0.0</PackageVersion>
     <AssemblyName>Meyer.Common.AspNetCore</AssemblyName>
     <RootNamespace>Meyer.Common.AspNetCore</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp3.0\Meyer.Common.AspNetCore.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.0.0" />
   </ItemGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.1\Meyer.Common.AspNetCore.xml</DocumentationFile>
-  </PropertyGroup>
   
 </Project>
