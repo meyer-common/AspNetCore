@@ -19,7 +19,7 @@ namespace Meyer.Common.AspNetCore
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
                 {
-                    endpoints.MapControllers();
+                    endpoints.MapDefaultControllerRoute();
                     endpoints.MapRazorPages();
                 });
         }
