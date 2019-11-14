@@ -1,28 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Text.Json;
 
 namespace Meyer.Common.AspNetCore
 {
     public static class ServiceCollectionExtensions
     {
-        public static IMvcCoreBuilder AddMvcMin(this IServiceCollection services)
+        public static IMvcBuilder AddMvcMin(this IServiceCollection services)
         {
-            return services
-                .AddMvcCore()
-                .AddJsonOptions(x =>
-                {
-                    x.JsonSerializerOptions.IgnoreNullValues = true;
-                    x.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-                });
-        }
+            services.AddControllers();
 
-        public static IMvcCoreBuilder AddMvcMin(this IServiceCollection services, Action<MvcOptions> setupAction)
-        {
             return services
-                .AddMvcCore(setupAction)
+                .AddRazorPages()
                 .AddJsonOptions(x =>
                 {
                     x.JsonSerializerOptions.IgnoreNullValues = true;

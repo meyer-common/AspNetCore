@@ -11,6 +11,19 @@ namespace Meyer.Common.AspNetCore
 {
     public static class ApplicationBuilderExtensions
     {
+        public static IApplicationBuilder UseMvcMin(this IApplicationBuilder app)
+        {
+            return app
+                .UseStaticFiles()
+                .UseRouting()
+                .UseAuthorization()
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                    endpoints.MapRazorPages();
+                });
+        }
+
         public static IApplicationBuilder UseCustomHealthCheck(this IApplicationBuilder builder, string apiName, string path)
         {
             var healthCheckOptions = new HealthCheckOptions
