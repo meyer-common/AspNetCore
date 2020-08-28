@@ -7,19 +7,6 @@ namespace Meyer.Common.AspNetCore
 {
     public static class ServiceCollectionExtensions
     {
-        public static IMvcBuilder AddMvcMin(this IServiceCollection services)
-        {
-            services.AddControllers();
-
-            return services
-                .AddRazorPages()
-                .AddJsonOptions(x =>
-                {
-                    x.JsonSerializerOptions.IgnoreNullValues = true;
-                    x.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-                });
-        }
-
         public static IServiceCollection AddApiVersioning(this IServiceCollection services, int defaultMajor = 1, int defaultMinor = 0)
         {
             return services.AddApiVersioning(options =>
