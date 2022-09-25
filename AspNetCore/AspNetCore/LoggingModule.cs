@@ -7,9 +7,7 @@ public static class LoggingModule
 {
     public static WebApplicationBuilder AddSerilog(this WebApplicationBuilder builder)
     {
-        builder.Host.UseSerilog((hostBuilderContext, loggerContext) => loggerContext
-            .ReadFrom.Configuration(hostBuilderContext.Configuration, "Serilog:Console")
-        );
+        builder.Host.UseSerilog((hostBuilderContext, loggerContext) => loggerContext.ReadFrom.Configuration(hostBuilderContext.Configuration, "Serilog:Console"));
 
         return builder;
     }
