@@ -6,7 +6,7 @@ namespace Meyer.Common.AspNetCore;
 
 public static class JsonConfigurationModule
 {
-    public static IServiceCollection AddHealthCheckModule(this IServiceCollection services)
+    public static IServiceCollection AddJsonConfiguration(this IServiceCollection services)
     {
         return services.Configure<JsonOptions>(options =>
         {
